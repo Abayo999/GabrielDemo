@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday <Tr class="Legit"></Tr></title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3e8e41;
+        }
+        #wish {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 18px;
+            display: none;
+            color: #fff;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 1s infinite;
+        }
+        @keyframes twinkle {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .toy {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-image: url("toy.png");
+            background-size: cover;
+            animation: run 5s linear infinite;
+        }
+        @keyframes run {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+        .bird {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background-image: url("bird.png");
+            background-size: cover;
+            animation: fly 5s linear infinite;
+        }
+        @keyframes fly {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Wish You Success</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="button" onclick="showWish()">Wish</button>
+    </form>
+    <div id="wish"></div>
+    <div class="toy"></div>
+    <div class="bird"></div>
+    <script>
+        function showWish() {
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
+            const wishDiv = document.getElementById("wish");
+            wishDiv.textContent = `Wish you success, ${name}! ${message}`;
+            wishDiv.style.display = "block";
+            createStars();
+        }
+
+        function createStars() {
+            const numStars = Math.floor(Math.random() * 200);
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement("div");
+                star.classList.add("star");
+                star.style.left = Math.random() * window.innerWidth + "px";
+                star.style.top = Math.random() * window.innerHeight + "px";
+                document.body.appendChild(star);
+            }
+        }
+    </script>
+</body>
+</html>
